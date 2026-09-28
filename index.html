@@ -197,11 +197,11 @@ h1,h2{text-transform:none}
 .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:1.02rem;letter-spacing:-.02em}
 .brand .mark{width:38px;height:38px;flex:none;display:grid;place-items:center;background:var(--ink);border-radius:8px}
 .brand .mark svg{width:20px;height:20px;fill:var(--paper)}
-.brand small{display:block;font-family:var(--mono);font-size:.56rem;font-weight:400;letter-spacing:.19em;text-transform:uppercase;color:var(--muted);margin-top:1px}
+.brand small{display:block;font-family:var(--mono);font-size:.56rem;font-weight:400;letter-spacing:.19em;text-transform:uppercase;color:var(--muted);margin-top:1px;white-space:nowrap}
 .nav{margin-left:auto;display:flex;align-items:center;gap:2px}
-.nav a{padding:9px 12px;font-size:.85rem;font-weight:600;color:var(--ink-2);border-radius:7px;transition:background .2s,color .2s;position:relative}
+.nav a{padding:9px 12px;font-size:.85rem;font-weight:600;color:var(--ink-2);border-radius:7px;white-space:nowrap;transition:background .2s,color .2s;position:relative}
 .nav a:hover{background:var(--paper-2);color:var(--ink)}
-.top .btn{margin-left:8px}
+.top .btn{margin-left:8px;white-space:nowrap}
 .burger{display:none;width:44px;height:44px;border-radius:9px;border:1px solid var(--line-2);background:none;cursor:pointer;align-items:center;justify-content:center;flex:none;transition:transform .2s,background .25s,border-color .25s}
 .burger:hover{border-color:var(--ink);opacity:.92}
 .burger:active{transform:scale(.93)}
@@ -615,13 +615,17 @@ footer{border-top:1px solid var(--line);background:var(--paper-2);padding:46px 0
   .stack-stats{grid-template-columns:1fr 1fr}
   .foot-in{grid-template-columns:1fr 1fr}
 }
-@media (max-width:900px){
-  .hero-grid,.magnet,.loss,.final{grid-template-columns:1fr}
-  .demo-grid{grid-template-columns:1fr}
+/* La barra horizontal solo se muestra cuando cabe; por debajo de 1280px
+   colapsa a menu para evitar que los botones se aprieten. */
+@media (max-width:1280px){
   .nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:10px 22px 18px}
   .nav.open{display:flex}
   .nav a{padding:12px 6px}
   .burger{display:flex}
+}
+@media (max-width:900px){
+  .hero-grid,.magnet,.loss,.final{grid-template-columns:1fr}
+  .demo-grid{grid-template-columns:1fr}
   .top .btn{margin-left:auto}
   .sb-actions{width:100%;margin-left:0}
   .score{grid-template-columns:1fr}

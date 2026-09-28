@@ -165,9 +165,9 @@ p{margin:0}
 .logo{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:700;font-size:1.1rem;letter-spacing:-.01em}
 .logo .mark{width:40px;height:40px;border-radius:12px;background:linear-gradient(150deg,var(--sky),var(--sky-deep));display:grid;place-items:center;flex:none;box-shadow:0 8px 18px -6px rgba(14,165,233,.6)}
 .logo .mark svg{width:22px;height:22px;fill:#fff}
-.logo span small{display:block;font-family:var(--mono);font-size:.6rem;font-weight:400;color:var(--sky-deep);letter-spacing:.16em;text-transform:uppercase;margin-top:1px}
+.logo span small{display:block;font-family:var(--mono);font-size:.6rem;font-weight:400;color:var(--sky-deep);letter-spacing:.16em;text-transform:uppercase;margin-top:1px;white-space:nowrap}
 .nav{margin-left:auto;display:flex;align-items:center;gap:2px}
-.nav a{padding:9px 13px;font-size:.86rem;font-weight:500;color:#4A6B7B;border-radius:10px;transition:color .25s,background .25s}
+.nav a{padding:9px 13px;font-size:.86rem;font-weight:500;color:#4A6B7B;border-radius:10px;white-space:nowrap;transition:color .25s,background .25s}
 .nav a:hover{color:var(--sky-deep);background:var(--mist-2)}
 .back{padding:9px 14px;font-size:.82rem;font-weight:600;border:1.5px solid var(--line);color:var(--sky-deep);display:inline-flex;align-items:center;gap:7px;white-space:nowrap;transition:background .25s,color .25s}
 .back:hover{background:var(--sky);color:#fff;border-color:var(--sky)}
@@ -353,13 +353,17 @@ footer{border-top:1px solid var(--line);background:#fff;padding:44px 0 30px}
   .stats{grid-template-columns:repeat(3,1fr)}
   .foot-in{grid-template-columns:1fr 1fr}
 }
-@media (max-width:900px){
-  .hero-in,.clinic-strip,.book,.final{grid-template-columns:1fr}
-  .team-grid{grid-template-columns:1fr}
+/* La barra horizontal solo se muestra cuando cabe; por debajo de 1240px
+   colapsa a menu para evitar que los botones se aprieten. */
+@media (max-width:1240px){
   .nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-bottom:1px solid var(--line);padding:10px 22px 18px;box-shadow:0 20px 40px -20px rgba(11,58,82,.4)}
   .nav.open{display:flex}
   .nav a{padding:12px 6px}
   .burger{display:flex}
+}
+@media (max-width:900px){
+  .hero-in,.clinic-strip,.book,.final{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr}
   .top-in{flex-wrap:nowrap}
   .slot-live{order:3;margin-left:0}
   .sb-actions{width:100%;margin-left:0}
@@ -501,8 +505,8 @@ footer{border-top:1px solid var(--line);background:#fff;padding:44px 0 30px}
       </button>
       <nav class="nav" id="nav" aria-label="Navegación principal">
         <a href="#tratamientos">Tratamientos</a>
-        <a href="#guia">Cuidado de la boca</a>
-        <a href="#proceso">Tu primera cita</a>
+        <a href="#guia">Guía</a>
+        <a href="#proceso">Proceso</a>
         <a href="#equipo">Equipo</a>
         <a href="#agendar">Agendar</a>
         <a href="#faq">Preguntas</a>

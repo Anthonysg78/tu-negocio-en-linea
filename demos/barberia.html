@@ -169,10 +169,10 @@ p{margin:0}
 .crest{display:flex;align-items:center;gap:12px}
 .crest .mark{width:44px;height:44px;flex:none;display:grid;place-items:center;border:1.5px solid var(--brass);transform:rotate(45deg);background:var(--coal)}
 .crest .mark svg{width:22px;height:22px;fill:var(--brass);transform:rotate(-45deg)}
-.crest b{font-family:var(--cond);font-size:1.5rem;font-weight:400;letter-spacing:.06em;display:block;line-height:1}
+.crest b{font-family:var(--cond);font-size:1.5rem;font-weight:400;letter-spacing:.06em;display:block;line-height:1;white-space:nowrap}
 .crest small{font-family:var(--mono);font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--brass);display:block;margin-top:3px}
 .nav{margin-left:auto;display:flex;align-items:center;gap:2px}
-.nav a{padding:9px 13px;font-size:.85rem;font-weight:500;color:var(--smoke);text-transform:uppercase;letter-spacing:.07em;border-radius:var(--r);transition:color .25s,background .25s}
+.nav a{padding:9px 13px;font-size:.85rem;font-weight:500;color:var(--smoke);text-transform:uppercase;letter-spacing:.07em;border-radius:var(--r);white-space:nowrap;transition:color .25s,background .25s}
 .nav a:hover{color:var(--brass);background:rgba(224,178,82,.08)}
 .back{padding:9px 14px;font-size:.8rem;font-weight:600;border:1.5px solid var(--line);color:var(--brass);display:inline-flex;align-items:center;gap:7px;white-space:nowrap;letter-spacing:.05em;transition:background .25s,color .25s}
 .back:hover{background:var(--brass);color:var(--coal)}
@@ -359,12 +359,16 @@ footer{border-top:1px solid var(--line);background:var(--soot);padding:44px 0 30
   .svc:nth-child(odd){border-right:0}
   .foot-in{grid-template-columns:1fr 1fr}
 }
-@media (max-width:900px){
-  .hero-in,.book,.final{grid-template-columns:1fr}
+/* La barra horizontal solo se muestra cuando cabe: logo + 6 enlaces + CTA
+   ocupan 1223px, asi que por debajo de 1280px colapsa a menu. */
+@media (max-width:1280px){
   .nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--coal);border-bottom:1px solid var(--line);padding:10px 22px 18px}
   .nav.open{display:flex}
   .nav a{padding:12px 6px}
   .burger{display:flex}
+}
+@media (max-width:900px){
+  .hero-in,.book,.final{grid-template-columns:1fr}
   .chairs{order:3;margin-left:0}
   .sb-actions{width:100%;margin-left:0}
   .ticket{position:static;transform:none;max-width:none;margin-top:14px}

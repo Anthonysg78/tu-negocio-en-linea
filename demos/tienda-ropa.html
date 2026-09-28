@@ -231,8 +231,8 @@ ul,ol{margin:0;padding:0;list-style:none}
 .viber-mark{display:flex;align-items:center;gap:11px;flex:none}
 .viber-mark .pip{width:34px;height:34px;border-radius:var(--r);background:var(--acc);display:grid;place-items:center}
 .viber-mark .pip svg{width:19px;height:19px;fill:var(--acc-ink)}
-.viber-mark b{display:block;font-family:var(--disp);font-size:.95rem;line-height:1;text-transform:var(--caps)}
-.viber-mark small{display:block;font-family:var(--mono);font-size:.55rem;letter-spacing:.16em;color:var(--muted);text-transform:uppercase;margin-top:3px}
+.viber-mark b{display:block;font-family:var(--disp);font-size:.95rem;line-height:1;text-transform:var(--caps);white-space:nowrap}
+.viber-mark small{display:block;font-family:var(--mono);font-size:.55rem;letter-spacing:.16em;color:var(--muted);text-transform:uppercase;margin-top:3px;white-space:nowrap}
 .vibes{display:flex;gap:7px;margin-left:0;flex-wrap:nowrap;min-width:0;overflow-x:auto;padding-bottom:2px;scrollbar-width:thin}
 .vibes-label{display:none;align-items:center;gap:7px;font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
 .vibe-btn{display:flex;align-items:center;gap:8px;padding:10px 15px;border-radius:var(--r);border:var(--bw) solid var(--line-2);background:transparent;color:var(--ink-2);font-family:var(--body);font-size:.8rem;font-weight:600;letter-spacing:.03em;cursor:pointer;text-transform:uppercase;transition:all .3s var(--ease)}
@@ -246,7 +246,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 
 /* ---- navegacion ---- */
 .tnav{margin-left:auto;display:flex;align-items:center;gap:2px;flex:none}
-.tnav a{padding:9px 12px;font-family:var(--body);font-size:.82rem;font-weight:600;letter-spacing:var(--track);text-transform:var(--caps);color:var(--ink-2);border-radius:var(--r);position:relative;transition:color .25s,background .25s}
+.tnav a{padding:9px 12px;font-family:var(--body);font-size:.82rem;font-weight:600;letter-spacing:var(--track);text-transform:var(--caps);color:var(--ink-2);border-radius:var(--r);position:relative;white-space:nowrap;transition:color .25s,background .25s}
 .tnav a::after{content:"";position:absolute;left:12px;right:12px;bottom:4px;height:2px;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
 .tnav a:hover{color:var(--ink);background:var(--surface)}
 .tnav a:hover::after,.tnav a.active::after{transform:scaleX(1)}
@@ -407,11 +407,9 @@ footer{border-top:var(--bw) solid var(--line);background:var(--bg-2);padding:46p
   .pstrip div:nth-child(1),.pstrip div:nth-child(2){border-bottom:var(--bw) solid var(--line)}
   .foot-in{grid-template-columns:1fr 1fr}
 }
-@media (max-width:900px){
-  .order,.info-grid{grid-template-columns:1fr}
-  .vibes{width:100%;margin-left:0;padding-bottom:3px}
-.viber-live{display:none}
-  .sb-actions{width:100%;margin-left:0}
+/* La barra horizontal de navegacion solo se muestra cuando cabe; por debajo
+   de 1280px colapsa a menu para que la fila superior no haga wrap. */
+@media (max-width:1280px){
   .tnav{display:none}
   .tnav.open{position:absolute;top:100%;left:0;right:0;z-index:96;flex-direction:column;align-items:stretch;gap:2px;background:var(--bg);border-bottom:var(--bw) solid var(--line);padding:12px clamp(18px,4vw,44px) 18px;box-shadow:0 24px 44px -28px rgba(0,0,0,.8)}
   .tnav.open a{padding:14px 10px;font-size:.95rem;border-radius:var(--r)}
@@ -419,6 +417,12 @@ footer{border-top:var(--bw) solid var(--line);background:var(--bg-2);padding:46p
   .tnav.open a.active{background:var(--surface);color:var(--ink)}
   .tnav.open a.back{margin:10px 0 0;border:var(--bw) solid var(--line-2);justify-content:center;padding:13px 10px}
   .burger{display:flex;margin-left:auto}
+}
+@media (max-width:900px){
+  .order,.info-grid{grid-template-columns:1fr}
+  .vibes{width:100%;margin-left:0;padding-bottom:3px}
+ .viber-live{display:none}
+  .sb-actions{width:100%;margin-left:0}
 }
 @media (max-width:640px){
   body{padding-bottom:158px}

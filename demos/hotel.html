@@ -122,10 +122,10 @@ header.nav-wrap.stuck{box-shadow:0 10px 34px -24px rgba(18,59,46,.5)}
 .brand .bm{width:38px;height:38px;border-radius:11px;background:var(--green);display:grid;place-items:center;flex:none;transition:transform .4s cubic-bezier(.22,.61,.36,1)}
 .brand:hover .bm{transform:rotate(-6deg)}
 .brand .bm svg{width:20px;height:20px;stroke:var(--brass);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.brand b{font-family:var(--serif);font-size:1.16rem;font-weight:600;letter-spacing:-.01em;display:block;line-height:1.15}
-.brand small{font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:var(--ink-2);font-weight:400}
+.brand b{font-family:var(--serif);font-size:1.16rem;font-weight:600;letter-spacing:-.01em;display:block;line-height:1.15;white-space:nowrap}
+.brand small{font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:var(--ink-2);font-weight:400;white-space:nowrap}
 .nav-links{display:flex;align-items:center;gap:4px;margin-left:auto}
-.nav-links a{position:relative;padding:9px 13px;font-size:14.5px;color:var(--ink-2);border-radius:8px;transition:color .28s,background .28s}
+.nav-links a{position:relative;padding:9px 13px;font-size:14.5px;color:var(--ink-2);border-radius:8px;white-space:nowrap;transition:color .28s,background .28s}
 .nav-links a::after{content:"";position:absolute;left:13px;right:13px;bottom:4px;height:1px;background:var(--brass);transform:scaleX(0);transform-origin:left;transition:transform .34s cubic-bezier(.22,.61,.36,1)}
 .nav-links a:hover{color:var(--green)}
 .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
@@ -399,7 +399,9 @@ footer .logo small{font-size:10.5px;letter-spacing:.18em;text-transform:uppercas
   .revs{grid-template-columns:1fr 1fr}
   .foot-in{grid-template-columns:1fr 1fr}
 }
-@media (max-width:900px){
+/* La barra horizontal solo se muestra cuando cabe; por debajo de 1160px
+   colapsa a menu para evitar que los botones se aprieten. */
+@media (max-width:1160px){
   .nav-links{
     position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;
     background:var(--bone);border-bottom:1px solid var(--line);padding:10px clamp(18px,4.4vw,44px) 20px;
@@ -410,6 +412,8 @@ footer .logo small{font-size:10.5px;letter-spacing:.18em;text-transform:uppercas
   .nav-links a::after{display:none}
   .nav-links .back-link{border:1px solid var(--line);border-radius:999px;margin-top:16px;justify-content:center;padding:13px 15px}
   .burger{display:flex}
+}
+@media (max-width:900px){
   .split{grid-template-columns:1fr}
   .split-media .float-card{right:14px;bottom:14px}
   .room,.room.rev{grid-template-columns:1fr;direction:ltr}

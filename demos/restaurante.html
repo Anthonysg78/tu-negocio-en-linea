@@ -206,16 +206,18 @@ ul{margin:0;padding:0;list-style:none}
 .top{position:fixed;top:0;left:0;right:0;z-index:80;background:rgba(12,10,8,.95);backdrop-filter:blur(18px) saturate(160%);border-bottom:1px solid transparent;transition:background .35s,border-color .35s}
 .top.solid{background:rgba(10,8,7,.99);border-bottom-color:var(--line)}
 .top-in{display:flex;align-items:center;gap:16px;min-height:78px}
-.logo{display:flex;align-items:center;gap:12px;line-height:1}
+.logo{display:flex;align-items:center;gap:12px;line-height:1;flex:none}
 .logo .mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(145deg,var(--copper),var(--ember));display:grid;place-items:center;flex:none;box-shadow:0 8px 22px rgba(217,72,43,.4)}
 .logo .mark svg{width:22px;height:22px}
-.logo span b{display:block;font-family:var(--display);font-size:1.16rem;font-weight:800;letter-spacing:-.01em;color:var(--bone)}
-.logo span small{display:block;font-family:var(--mono);font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:#EFA85C;margin-top:4px;font-weight:700}
-.nav{margin-left:auto;display:flex;align-items:center;gap:2px}
-.nav a{padding:10px 13px;font-size:.9rem;font-weight:500;color:var(--bone);border-radius:999px;transition:background .25s,color .25s}
-.nav a:hover{background:rgba(243,234,223,.14);color:#fff}
-.back{padding:10px 17px;border-radius:999px;font-size:.83rem;font-weight:600;border:1px solid var(--line-2);color:var(--bone);display:inline-flex;align-items:center;gap:7px;transition:all .25s;white-space:nowrap}
-.back:hover{background:var(--copper);color:var(--ink);border-color:var(--copper)}
+.logo span b{display:block;font-family:var(--display);font-size:1.16rem;font-weight:800;letter-spacing:-.01em;color:var(--bone);white-space:nowrap}
+.logo span small{display:block;font-family:var(--mono);font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:#EFA85C;margin-top:4px;font-weight:700;white-space:nowrap}
+.nav{margin-left:auto;display:flex;align-items:center;gap:6px;flex-wrap:nowrap}
+.nav a{padding:10px 14px;font-size:.9rem;font-weight:600;color:var(--bone);border-radius:999px;background:rgba(243,234,223,.09);border:1px solid rgba(243,234,223,.2);white-space:nowrap;transition:background .25s,color .25s,border-color .25s}
+.nav a:hover{background:rgba(243,234,223,.2);border-color:rgba(243,234,223,.45);color:#fff}
+.nav a:focus-visible{outline:3px solid var(--copper);outline-offset:2px}
+.nav .cta-link{display:none}
+.back{padding:10px 15px;border-radius:999px;font-size:.83rem;font-weight:600;border:1px solid var(--line-2);color:var(--bone);display:inline-flex;align-items:center;gap:7px;transition:all .25s;white-space:nowrap}
+.back:hover{background:rgba(243,234,223,.2);color:#fff;border-color:rgba(243,234,223,.45)}
 .back svg{width:15px;height:15px}
 .burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line-2);background:rgba(243,234,223,.07);cursor:pointer;align-items:center;justify-content:center;flex:none;transition:transform .2s,background .25s,border-color .25s}
 .burger:hover{background:rgba(243,234,223,.07);border-color:var(--bone);opacity:.92}
@@ -499,11 +501,18 @@ footer{background:#0A0807;border-top:1px solid var(--line);padding:48px 0 40px}
   .gal a:nth-child(1){grid-column:span 2;grid-row:span 2}
   .gal a:nth-child(6){grid-column:span 1}
 }
-@media (max-width:900px){
-  .nav{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;background:rgba(14,11,9,.98);border-bottom:1px solid var(--line);padding:14px 20px 20px;display:none;box-shadow:var(--shadow-lg)}
+/* La barra colapsa a menu antes de que los botones tengan que apretarse:
+   logo + 5 enlaces + CTA + "Ver demos" ocupa 1133px, asi que por debajo de
+   1200px cualquier ajuste parte los botones en dos lineas. */
+@media (max-width:1200px){
+  .nav{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:8px;background:rgba(10,8,7,.99);border-bottom:1px solid var(--line);padding:16px 20px 22px;display:none;box-shadow:var(--shadow-lg)}
   .nav.open{display:flex}
-  .nav a{padding:13px 10px;font-size:1rem}
+  .nav a{padding:14px 16px;font-size:1rem;justify-content:center}
+  .nav a.cta-link{display:flex}
+  .nav .back{justify-content:center;padding:14px 16px;font-size:.9rem}
   .burger{display:flex}
+}
+@media (max-width:900px){
   .top .btn{display:none}
 }
 @media (max-width:620px){
@@ -553,11 +562,11 @@ footer{background:#0A0807;border-top:1px solid var(--line);padding:48px 0 40px}
       <a href="#carta">Carta</a>
       <a href="#diario">Plato del día</a>
       <a href="#privados">Salones privados</a>
-      <a href="#reservar">Reservar mesa</a>
+      <a class="cta-link" href="#reservar">Reservar mesa</a>
       <a href="#visitanos">Visitarnos</a>
       <a class="back" href="../index.html#demos">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-        Volver al selector
+        Ver demos
       </a>
     </nav>
     <a class="btn btn-fire" href="#reservar" style="margin-left:14px">
