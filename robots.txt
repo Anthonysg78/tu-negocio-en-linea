@@ -1,0 +1,8 @@
+# Todo el sitio es publico a proposito: es un portfolio de demos.
+User-agent: *
+Allow: /
+
+# El validador no es parte del sitio, no hace falta indexarlo.
+Disallow: /.tools/
+
+Sitemap: https://anthonysg78.github.io/tu-negocio-en-linea/sitemap.xml
